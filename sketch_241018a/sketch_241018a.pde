@@ -77,15 +77,15 @@ void setup()
   String musicPathway = "Music/";
   String mp3FileName = ".mp3";
   //Alphebetical order, same as OS ordering files
-  String BeatYourCompetition = "Beat_Your_Competition";
-  String OneHourMinecraftPigstep = "One Hour Minecraft  Pigstep";
+  String ariamath = "ariamath";
+  String miceonvenus = "miceonvenus";
   String otherside = "otherside";
   //
   //Add Reading into Array
-  String directory = "../" + musicPathway;
-  String file = directory + BeatYourCompetition + mp3FileName;
+  String directory = "../../" + musicPathway;
+  String file = directory + ariamath + mp3FileName;
   song[currentSong] = minim.loadFile( file );
-  file = directory + OneHourMinecraftPigstep + mp3FileName;
+  file = directory + miceonvenus + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
   file = directory + otherside + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
@@ -190,7 +190,7 @@ void keyPressed() {
   //
   if ( key=='L'  || key=='l' ) ; song[currentSong].loop(1);//loop once:plays,then plays again,then stop & rewinds
   if ( key=='L'  || key=='l' ) ; song[currentSong].loop(-1);//loop infintity//parameter:blank or -1
-  if ( key=='F'  || key=='f' )song[currentSong].skip(10000) ; // fast forward//parameter:
+  if ( key=='F'  || key=='f' ) ; song[currentSong].skip(10000) ; // fast forward//parameter:
   if ( key=='L'  || key=='l' ) ; //fast reverse
   if ( key=='L'  || key=='l' ) ; //mute
   if ( key=='L'  || key=='l' ) ; //pause
