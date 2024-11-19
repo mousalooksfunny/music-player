@@ -77,21 +77,19 @@ void setup()
   String musicPathway = "music/";
   String mp3FileName = ".mp3";
   //Alphebetical order, same as OS ordering files
-  String  ariamath = "ariamath.mp3";
-  String miceonvenus = "miceonvenus.mp3";
-  String otherside = "otherside.mp3";
+  String BeatYourCompetition = "Beat_Your_Competition";
+  String OneHourMinecraftPigstep = "One Hour Minecraft  Pigstep";
+  String otherside = "otherside";
   //
   //Add Reading into Array
   String directory = "../../" + musicPathway;
-  String file = directory + OneHourMinecraftPigstep + mp3FileName;
+  String file = directory + BeatYourCompetition + mp3FileName;
   song[currentSong] = minim.loadFile( file );
-  file = directory + BeatYourCompetition + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
   file = directory + OneHourMinecraftPigstep + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
   file = directory + otherside + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
-    //
+  //
   currentSong = 0;
   //
   //song[currentSong].play();
@@ -181,59 +179,37 @@ void keyPressed() {
    Note: CAP Lock with ||
    if ( key==? || key==? ) ;
    */
-  if ( key=='P' || key=='p' ) song[currentSong].play(); //Simple Play, no double tap possible
+  //if ( key=='P' || key=='p' ) song[currentSong].play(); //Simple Play, no double tap possible
   //
-  //if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
+  if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
    Symbol is two triangles
    This changes what the button might become after it is pressed
    */
   //if ( key=='S' || key=='s' ) song[currentSong].pause(); //Simple Stop, no double taps
   //
-  if ( key=='S' | key=='s' ) {
-    if ( song[currentSong].isPlaying() ) {
-      song[currentSong].pause(); //single tap
-    } else {
-      song[currentSong].rewind(); //double tap
-    }
-  }
-  if ( key=='L' || key=='l' ) song[currentSong].loop(1); // Loop ONCE: Plays, then plays again, then stops & rewinds
-  if ( key=='K' || key=='k' ) song[currentSong].loop(); // Loop Infinitely //Parameter: BLANK or -1
-  if ( key=='F' || key=='f' ) song[currentSong].skip( 10000 ); // Fast Forward, Rewind, & Play Again //Parameter: milliseconds
-  if ( key=='R' || key=='r' ) song[currentSong].skip( -10000 ); // Fast Reverse & Play //Parameter: negative numbers
-  if ( key=='M' || key=='m' ) { // MUTE
-    //
-    //MUTE Behaviour: stops electricty to speakers, does not stop file
-    //NOTE: MUTE has NO built-in PUASE button, NO built-in rewind button
-    //ERROR: if song near end of file, user will not know song is at the end
-    //Known ERROR: once song plays, MUTE acts like it doesn't work
-    if ( song[currentSong].isMuted() ) {
-      //ERROR: song might not be playing
-      //CATCH: ask .isPlaying() or !.isPlaying()
+  if ( key=='L'  || key=='l' ) ; song[currentSong].loop(1);//loop once:plays,then plays again,then stop & rewinds
+  if ( key=='L'  || key=='l' ) ; song[currentSong].loop(-1);//loop infintity//parameter:blank or -1
+  if ( key=='F'  || key=='f' )song[currentSong].skip(10000) ; // fast forward,rewind,& play again //parameter:milliseconds
+  if ( key=='R'  || key=='r' )song[currentSong].skip(10000) ; //fast reverse & play //parameter:negative numbers
+  if ( key=='M'  || key=='m' ) ; { //mute
+     //
+     if(song[currentSong].isMuted() ) {
       song[currentSong].unmute();
-    } else {
-      //Possible ERROR: Might rewind the song
-      song[currentSong].mute();
-    }
+     } else {
+       song[currentSong].mute();
+     }
   }
-  if ( key=='O' || key=='o' ) { // Pause
-    //
-    if ( song[currentSong].isPlaying() ) {
-      song[currentSong].pause();
-    } else {
-      song[currentSong].play();
-    }
+  if ( key=='O'  || key=='o' ) ; //pause
+  //
+  if (song[currentSong].isPlaying() ) {
+   song[currentSong].pause();
+  }else{
+    song[currentSong].play();
   }
-  if ( key==CODED || keyCode==ESC ) exit(); // QUIT //UP
-  if ( key=='Q' || key=='q' ) exit(); // QUIT
-  //
-  if ( key=='N' || key=='n' ) ; // NEXT //See .txt for starter hint
-  if ( song[currentSong].isPlaying() ) {
-    song[currentsong].pause();
-    song[currentsong].rewind();
-  // 
-  //
-  //if ( key=='' || key=='' ) ; // Play-Pause-STOP
-} //End keyPressed
+}
+
+//if ( key==Coded|| keyCode=='ESC');// QUIT
+ //End Main Program
 //
 // End Main Program
